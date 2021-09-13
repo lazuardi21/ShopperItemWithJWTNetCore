@@ -1,0 +1,143 @@
+﻿@model IEnumerable<WNTS_V1._0._2.Models.PL_GAS_COMPONENT>
+
+@{
+    ViewData["Title"] = "Filter";
+}
+
+<h1>Filter</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ASSET_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DATE_STAMP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.C1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.C2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.C3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IC4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NC4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IC5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NC5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.C6)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.C7)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.C8)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.C9)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.N2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CO2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.H2O)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HCDP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CALC_HCDP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GHV)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ASSET_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATE_STAMP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IC4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NC4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IC5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NC5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C6)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C7)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C8)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C9)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.N2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CO2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.H2O)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HCDP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CALC_HCDP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GHV)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

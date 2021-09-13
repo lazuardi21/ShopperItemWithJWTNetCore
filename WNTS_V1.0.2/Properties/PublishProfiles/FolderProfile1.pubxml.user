@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\Work\MEDCO\Publish</_PublishTargetUrl>
+    <History>True|2021-08-27T03:41:07.7934233Z;True|2021-08-27T10:40:50.8578384+07:00;True|2021-08-23T10:42:28.8322829+07:00;True|2021-08-23T10:24:52.1959930+07:00;True|2021-08-16T09:24:17.0433036+07:00;True|2021-08-12T21:03:41.4854685+07:00;True|2021-08-12T15:53:03.5872424+07:00;True|2021-08-12T13:35:17.8056953+07:00;True|2021-08-12T11:34:26.7768536+07:00;</History>
+  </PropertyGroup>
+</Project>
