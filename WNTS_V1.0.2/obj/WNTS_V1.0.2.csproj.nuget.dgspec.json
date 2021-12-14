@@ -1,27 +1,34 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Work\\MEDCO\\Web App\\WNTS_V1.0.2\\WNTS_V1.0.2\\WNTS_V1.0.2.csproj": {}
+    "D:\\Work\\TEST\\Shopping\\WNTS_V1.0.2\\WNTS_V1.0.2.csproj": {}
   },
   "projects": {
-    "D:\\Work\\MEDCO\\Web App\\WNTS_V1.0.2\\WNTS_V1.0.2\\WNTS_V1.0.2.csproj": {
+    "D:\\Work\\TEST\\Shopping\\WNTS_V1.0.2\\WNTS_V1.0.2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Work\\MEDCO\\Web App\\WNTS_V1.0.2\\WNTS_V1.0.2\\WNTS_V1.0.2.csproj",
+        "projectUniqueName": "D:\\Work\\TEST\\Shopping\\WNTS_V1.0.2\\WNTS_V1.0.2.csproj",
         "projectName": "WNTS_V1.0.2",
-        "projectPath": "D:\\Work\\MEDCO\\Web App\\WNTS_V1.0.2\\WNTS_V1.0.2\\WNTS_V1.0.2.csproj",
-        "packagesPath": "C:\\Users\\SPCUser\\.nuget\\packages\\",
-        "outputPath": "D:\\Work\\MEDCO\\Web App\\WNTS_V1.0.2\\WNTS_V1.0.2\\obj\\",
+        "projectPath": "D:\\Work\\TEST\\Shopping\\WNTS_V1.0.2\\WNTS_V1.0.2.csproj",
+        "packagesPath": "C:\\Users\\lfenjano\\.nuget\\packages\\",
+        "outputPath": "D:\\Work\\TEST\\Shopping\\WNTS_V1.0.2\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Work Apps\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\SPCUser\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\lfenjano\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "D:\\Work Apps\\Microsoft Visual Studio\\.nuget\\packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -63,6 +70,10 @@
             "Oracle.ManagedDataAccess.Core": {
               "target": "Package",
               "version": "[2.19.60, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
             }
           },
           "imports": [
@@ -83,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

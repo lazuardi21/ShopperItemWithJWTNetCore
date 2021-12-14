@@ -13,10 +13,10 @@ namespace WNTS_V1._0._2.Models
         public string TOKEN { get; set; }
 
 
-        public AuthenticateResponse(PL_USER user, string token)
+        public AuthenticateResponse(USER user, string token)
         {
-            USER_ID = user.USER_ID;
-            USER_NAME = user.USER_NAME;
+            USER_ID = user.id;
+            USER_NAME = user.username;
             TOKEN = token;
         }
     }

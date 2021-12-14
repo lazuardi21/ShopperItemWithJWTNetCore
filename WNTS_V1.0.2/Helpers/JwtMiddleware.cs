@@ -53,10 +53,10 @@ namespace WNTS_V1._0._2.Helpers
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
-                var userName = (string)(jwtToken.Claims.First(x => x.Type == "sub").Value);
+                var email = (string)(jwtToken.Claims.First(x => x.Type == "sub").Value);
 
                 // attach user to context on successful jwt validation
-                context.Items["User"] = userService.GetByName(userName);
+                context.Items["User"] = userService.GetByName(email);
             }
             catch (Exception)
             {

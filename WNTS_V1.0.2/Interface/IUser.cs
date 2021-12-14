@@ -5,10 +5,10 @@ namespace WNTS_V1._0._2.Interface
 {
     public interface IUser
     {
-        List<PL_USER> Authenticate(string USER_NAME, string PASSWORD);
-        IEnumerable<PL_USER> GetAll();
-        PL_USER GetByName(string name);
-        void Register(string USER_NAME,  string PASSWORD);
+        List<USER> Authenticate(string email, string PASSWORD);
+        IEnumerable<USER> GetAll();
+        USER GetByName(string email);
+        List<USER> Register(string user_name, string PASSWORD_ENC, string email, string phone, string country, string city, string postcode, string name, string address);
 
 
     }

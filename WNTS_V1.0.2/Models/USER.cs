@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WNTS_V1._0._2.Models
 {
-    public class AuthenticateRequest
+    public class USER
     {
         [Required]
         public int id { get; set; }
@@ -20,5 +20,6 @@ namespace WNTS_V1._0._2.Models
         public string postcode { get; set; }
         public string name { get; set; }
         public string address { get; set; }
+
     }
 }

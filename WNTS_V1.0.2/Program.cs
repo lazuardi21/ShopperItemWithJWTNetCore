@@ -16,7 +16,7 @@ namespace WNTS_V1._0._2
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>()
-                     .UseUrls("http://192.168.193.60:4000"); 
+                     .UseUrls("http://192.168.1.14:4000"); 
                 });
     }
 }

@@ -41,15 +41,34 @@ namespace WNTS_V1._0._2.Controllers
         //{
         //    _dataAccessProvider = dataAccessProvider;
         //}
-        string reg = @"^[a-zA-Z0-9.\s]{1,40}$";
+        string reg = @"^[a-zA-Z0-9@.\s]{1,40}$";
         //Response.Write(reg.IsMatch(txtName.Text));
-
-        [HttpPost("login")]
-        public ActionResult UserLogin(AuthenticateRequest login)
+        [Authorize]
+        [HttpGet]
+        public ActionResult GetUsers()
         {
             ActionResult response = Unauthorized();
 
-            if (!Regex.IsMatch(login.USER_NAME, reg))
+            
+
+            var users = _data.GetAll();
+
+            if (users != null)
+            {
+               response = Ok(new { users});
+                //var tokens = _antiForgery.GetAndStoreTokens(HttpContext);
+                
+            }
+
+            return response;
+        }
+
+        [HttpPost("signin")]
+        public ActionResult UserLogin(USER login)
+        {
+            ActionResult response = Unauthorized();
+
+            if (!Regex.IsMatch(login.email, reg))
             {
                 // Name does not match expression
 
@@ -63,7 +82,9 @@ namespace WNTS_V1._0._2.Controllers
             if (user != null)
             {
                 var tokenString = GenerateJSONWebToken(user);
-                response = Ok(new { token = tokenString });
+                string user_name = user.username;
+                string email = user.email;
+                response = Ok(new { email = email, token = tokenString, username = user_name });
                 //var tokens = _antiForgery.GetAndStoreTokens(HttpContext);
                 Response.Cookies.Append("XSRF-TOKEN", tokenString, new Microsoft.AspNetCore.Http.CookieOptions
                 {
@@ -73,12 +94,12 @@ namespace WNTS_V1._0._2.Controllers
 
             return response;
         }
-        [HttpPost("register")]
+        [HttpPost("signup")]
         public ActionResult Register(AuthenticateRequest login)
         {
             ActionResult response = Unauthorized();
 
-            if (!Regex.IsMatch(login.USER_NAME, reg))
+            if (!Regex.IsMatch(login.username, reg))
             {
                 // Name does not match expression
 
@@ -86,14 +107,39 @@ namespace WNTS_V1._0._2.Controllers
                 response = BadRequest(new { message = error });
                 return response;
             }
-            string USER_NAME = login.USER_NAME;
-            string PASSWORD = login.PASSWORD;
-            string PASSWORD_ENC = Encrypt(PASSWORD);
-            _data.Register(USER_NAME, PASSWORD_ENC);
-            response = Ok(new { message = "The data has been created successfully" });
 
-            return response;
+            string user_name = login.username;
+            string password = login.password;
+            string email = login.email;
+            string phone = login.phone;
+            string country = login.country;
+            string city = login.city;
+            string postcode = login.postcode;
+            string name = login.name;
+            string address = login.address;
+           
+            string PASSWORD_ENC = Encrypt(password);
+            var user = _data.Register(user_name, PASSWORD_ENC, email, phone, country,city,postcode,name,address);
+            if (user != null)
+            {
+                USER users = null;
+                if (user.Count > 0)
+                {
+                    users = new USER { email = email, password = password };
+                }
+                var tokenString = GenerateJSONWebToken(users);
 
+                //var tokens = _antiForgery.GetAndStoreTokens(HttpContext);
+                Response.Cookies.Append("XSRF-TOKEN", tokenString, new Microsoft.AspNetCore.Http.CookieOptions
+                {
+                    HttpOnly = true
+                });
+
+                response = Ok(new { email = email, token = tokenString, username = user_name });
+
+                return response;
+            }
+            return null;
         }
 
         //[HttpPost("register/{user_name}/{password}")]
@@ -103,27 +149,29 @@ namespace WNTS_V1._0._2.Controllers
 
         //}
 
-        private AuthenticateRequest AuthenticateUser(AuthenticateRequest login)
+        private USER AuthenticateUser(USER login)
         {
-            AuthenticateRequest user = null;
+            USER user = null;
 
             //Validate the User Credentials    
-            string USER_NAME = login.USER_NAME;
-            string PASSWORD = login.PASSWORD;
+            string email = login.email;
+            string PASSWORD = login.password;
             string PASSWORD_DEC = Encrypt(PASSWORD);
-            if (_data.Authenticate(USER_NAME, PASSWORD_DEC).Count > 0)
+            var b = _data.Authenticate(email, PASSWORD_DEC);
+            if (b.Count > 0)
             {
-                user = new AuthenticateRequest { USER_NAME = USER_NAME, PASSWORD = PASSWORD };
+                string username = b[0].username;
+                user = new USER { email = email, password = PASSWORD_DEC, username = username  };
             }
             return user;
         }
-        private string GenerateJSONWebToken(AuthenticateRequest userInfo)
+        private string GenerateJSONWebToken(USER userInfo)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new[] {
-            new Claim(JwtRegisteredClaimNames.Sub, userInfo.USER_NAME),
+            new Claim(JwtRegisteredClaimNames.Sub, userInfo.email),
             //new Claim(JwtRegisteredClaimNames.Email, userInfo.EmailAddress),
             //new Claim("DateOfJoing", userInfo.DateOfJoing.ToString("yyyy-MM-dd")),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())

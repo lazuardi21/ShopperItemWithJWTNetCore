@@ -74,6 +74,7 @@ namespace WNTS_V1._0._2
             services.AddTransient<IGasComponent, GasComponentService>();
             services.AddScoped<IGasOperation, GasOperationService>();
             services.AddScoped<IUser, UserService>();
+            services.AddScoped<IShopping, ShoppingService>();
             services.AddScoped<IGasCoOp, GasCoOpService>();
 
 
